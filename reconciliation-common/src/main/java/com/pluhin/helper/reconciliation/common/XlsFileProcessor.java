@@ -76,7 +76,6 @@ public class XlsFileProcessor {
         sums.add(row.getCell(cellNum).getNumericCellValue());
       }
     } catch (NullPointerException e) {
-      System.out.println(rowError);
       return sums;
     }
 
@@ -148,7 +147,6 @@ public class XlsFileProcessor {
         row.getCell(counter++).setCellValue(number);
       }
     } catch (NullPointerException e) {
-      System.out.println("NPE");
     }
   }
 }

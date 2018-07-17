@@ -6,7 +6,17 @@
 
 <div th:if="${errors}">
 
-  <h2 th:text="${errors}"/>
+  <h1>Credit 1 -> Debit 2</h1>
+  <h2 th:text="${errors.credit1}"/>
+
+  <h1>Debit 2-> Credit 1</h1>
+  <h2 th:text="${errors.debit2}"/>
+
+  <h1>Credit 2 -> Debit 1</h1>
+  <h2 th:text="${errors.credit2}"/>
+
+  <h1>Debit 1 -> Credit 2</h1>
+  <h2 th:text="${errors.debit1}"/>
 </div>
 
 </body>
