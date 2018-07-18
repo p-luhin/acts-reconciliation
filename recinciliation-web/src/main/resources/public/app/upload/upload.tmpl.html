@@ -1,0 +1,17 @@
+<div class="text-center">
+  <h1>Сверка взаиморасчётов</h1>
+</div>
+<div class="col-md-6">
+  <div class="upload">
+    <div class="custom-file upload-input">
+      <input type="file" class="custom-file-input" id="customFile" file-input ng-model="file">
+      <label class="custom-file-label" for="customFile">Выбрать файл</label>
+    </div>
+    <input type="button" class="btn btn-default" style="float: right" value="Загрузить" ng-click="uploadFile(file)">
+  </div>
+
+  <div ng-if="ctrl.result">
+    <h1>got result!</h1>
+  </div>
+
+</div>
