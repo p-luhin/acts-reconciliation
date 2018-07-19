@@ -26,6 +26,7 @@ public class ActsExceptionHandler extends ResponseEntityExceptionHandler {
   @ResponseStatus(INTERNAL_SERVER_ERROR)
   @ExceptionHandler(Exception.class)
   public ErrorDTO handleUncaughtException(Exception e) {
+    log.error("", e);
     return new ErrorDTO(INTERNAL_SERVER_ERROR.value(), e.getMessage());
   }
 }
