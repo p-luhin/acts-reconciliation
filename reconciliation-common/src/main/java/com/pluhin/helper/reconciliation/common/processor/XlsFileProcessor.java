@@ -1,5 +1,7 @@
-package com.pluhin.helper.reconciliation.common;
+package com.pluhin.helper.reconciliation.common.processor;
 
+import com.pluhin.helper.reconciliation.common.dto.CheckErrorsDTO;
+import com.pluhin.helper.reconciliation.common.exception.InvalidFileException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class XlsFileProcessor {
       workbook = new XSSFWorkbook(stream);
     } catch (IOException e) {
       System.out.println("IO Exception");
-      throw new RuntimeException(e);
+      throw new InvalidFileException(e);
     }
 
     XSSFSheet sheet = workbook.getSheetAt(0);

@@ -1,4 +1,4 @@
-package com.pluhin.helper.reconciliation.common;
+package com.pluhin.helper.reconciliation.common.dto;
 
 import java.util.ArrayList;
 import java.util.List;

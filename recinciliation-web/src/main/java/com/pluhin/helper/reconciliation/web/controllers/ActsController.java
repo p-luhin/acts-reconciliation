@@ -1,8 +1,9 @@
-package com.pluhin.helper.reconciliation.web;
+package com.pluhin.helper.reconciliation.web.controllers;
 
 import static org.springframework.http.ResponseEntity.ok;
 
-import com.pluhin.helper.reconciliation.common.CheckErrorsDTO;
+import com.pluhin.helper.reconciliation.common.dto.CheckErrorsDTO;
+import com.pluhin.helper.reconciliation.web.service.ActsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

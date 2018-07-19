@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('acts').controller('uploadCtrl',
-    function ($scope, $location, uploadService) {
+    function ($scope, $location, uploadService, toastr) {
 
       $scope.uploadFile = function (file) {
-        uploadService.upload(file).then(response => {
-          console.log(response.data);
-          $scope.result = response.data;
-        })
+        uploadService.upload(file).then(
+            response => {
+              toastr.success('', 'Success');
+              $scope.result = response.data;
+            }, error => {
+              toastr.error(error.data.message, 'Ошибка')
+            });
       };
 
       $('.custom-file-input').on('change', function () {

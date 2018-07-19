@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('acts', ['ngRoute']);
+angular.module('acts', ['ngRoute', 'ngAnimate', 'toastr']);

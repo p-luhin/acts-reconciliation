@@ -1,7 +1,9 @@
-package com.pluhin.helper.reconciliation.web;
+package com.pluhin.helper.reconciliation.web.service;
 
-import com.pluhin.helper.reconciliation.common.CheckErrorsDTO;
-import com.pluhin.helper.reconciliation.common.XlsFileProcessor;
+import com.pluhin.helper.reconciliation.common.constants.ErrorConstants;
+import com.pluhin.helper.reconciliation.common.dto.CheckErrorsDTO;
+import com.pluhin.helper.reconciliation.common.exception.InvalidFileException;
+import com.pluhin.helper.reconciliation.common.processor.XlsFileProcessor;
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,7 @@ public class ActsService {
       fileProcessor = new XlsFileProcessor(multipartFile.getInputStream());
     } catch (IOException e) {
       log.error("Some error occurred", e);
-      throw new RuntimeException("Неверный файл или формат файла");
+      throw new InvalidFileException();
     }
 
     return fileProcessor.doCheck();
