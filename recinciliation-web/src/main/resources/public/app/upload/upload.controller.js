@@ -3,14 +3,12 @@
 angular.module('acts').controller('uploadCtrl',
     function ($scope, $location, uploadService) {
 
-      $scope.uploadFile = uploadFile;
-
-      function uploadFile(file) {
-        console.log("test");
-        uploadService.upload(file).then(result => {
-          $scope.result = result;
+      $scope.uploadFile = function (file) {
+        uploadService.upload(file).then(response => {
+          console.log(response.data);
+          $scope.result = response.data;
         })
-      }
+      };
 
       $('.custom-file-input').on('change', function () {
         let fileName = $(this).val().split('\\').pop();

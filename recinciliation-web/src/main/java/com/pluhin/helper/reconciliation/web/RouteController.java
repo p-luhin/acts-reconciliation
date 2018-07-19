@@ -6,13 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RouteController {
 
-  @GetMapping("/")
+  @GetMapping({"", "/"})
   public String index() {
-    return "index";
-  }
-
-  @GetMapping("/check-status")
-  public String checkStatus() {
-    return "check-status";
+    return "index.html";
   }
 }

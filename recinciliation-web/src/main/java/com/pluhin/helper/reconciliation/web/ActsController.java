@@ -1,13 +1,15 @@
 package com.pluhin.helper.reconciliation.web;
 
+import static org.springframework.http.ResponseEntity.ok;
+
 import com.pluhin.helper.reconciliation.common.CheckErrorsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/api/acts")
@@ -21,11 +23,7 @@ public class ActsController {
   }
 
   @PostMapping("/show")
-  public String sendErrorsResponse(
-      @RequestParam MultipartFile file,
-      RedirectAttributes redirectAttributes) {
-    CheckErrorsDTO checkErrors = actsService.doReconciliation(file);
-    redirectAttributes.addFlashAttribute("errors", checkErrors);
-    return "redirect:/check-status";
+  public ResponseEntity<CheckErrorsDTO> sendErrorsResponse(@RequestParam MultipartFile file) {
+    return ok(actsService.doReconciliation(file));
   }
 }

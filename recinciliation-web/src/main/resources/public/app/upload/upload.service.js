@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('acts').factory('uploadService', function ($http) {
+
   return {
     upload: upload
   };
@@ -8,8 +9,8 @@ angular.module('acts').factory('uploadService', function ($http) {
   function upload(file) {
     let fd = new FormData();
     fd.append('file', file);
-    return $http.post('/api/acts/upload', fd, {
-      transformRequest: angular.identity,
+
+    return $http.post('/api/acts/show', fd, {
       headers: {'Content-Type': undefined}
     });
   }

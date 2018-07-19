@@ -5,3 +5,11 @@
 .col-md-6 {
   max-width: 100%; !important;
 }
+
+.upload-form {
+  margin-top: 25px;
+}
+
+.upload-title {
+  margin-top: 20px;
+}
