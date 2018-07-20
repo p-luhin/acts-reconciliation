@@ -1,6 +1,6 @@
 package com.pluhin.helper.reconciliation.processor;
 
-import com.pluhin.helper.reconciliation.ActsConfig;
+import com.pluhin.helper.reconciliation.entity.ActsConfig;
 import com.pluhin.helper.reconciliation.common.act.Act;
 import com.pluhin.helper.reconciliation.common.act.ActItem;
 import java.util.Iterator;

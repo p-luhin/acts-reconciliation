@@ -1,0 +1,63 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+  <changeSet id="v1.1_1" author="p.luhin">
+    <comment>Create acts config table</comment>
+    <createTable tableName="acts_config">
+      <column name="id" autoIncrement="true" type="int">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="act_name" type="VARCHAR(100)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="document_column" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="date_column" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="data_start_row" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="credit_column" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="debit_column" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="data_end_column" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="data_end_text_part" type="VARCHAR(100)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="v1.1_2" author="p.luhin">
+    <comment>Create table users</comment>
+    <createTable tableName="users">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="username" type="VARCHAR(100)">
+        <constraints nullable="true" unique="true"/>
+      </column>
+      <column name="password" type="VARCHAR(100)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="v1.1_3" author="p.luhin">
+    <comment>add default user</comment>
+    <insert tableName="user">
+      <column name="id" valueNumeric="1"/>
+      <column name="username" value="pavel.luhin@gmail.com"/>
+      <column name="password" value="$2a$04$nZkme/R9IKfRunz3UZN1WOkdESAl399ZW12T/a5TfD4Do2feOUkYi"/>
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

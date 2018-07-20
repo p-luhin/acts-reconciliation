@@ -3,7 +3,7 @@ package com.pluhin.helper.reconciliation.controllers;
 import static org.springframework.http.ResponseEntity.noContent;
 import static org.springframework.http.ResponseEntity.ok;
 
-import com.pluhin.helper.reconciliation.ActsConfig;
+import com.pluhin.helper.reconciliation.entity.ActsConfig;
 import com.pluhin.helper.reconciliation.service.ActsConfigService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

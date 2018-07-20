@@ -1,6 +1,6 @@
 package com.pluhin.helper.reconciliation.service;
 
-import com.pluhin.helper.reconciliation.ActsConfig;
+import com.pluhin.helper.reconciliation.entity.ActsConfig;
 import com.pluhin.helper.reconciliation.common.act.Act;
 import com.pluhin.helper.reconciliation.common.act.ActItem;
 import com.pluhin.helper.reconciliation.common.dto.CheckErrorsDTO;

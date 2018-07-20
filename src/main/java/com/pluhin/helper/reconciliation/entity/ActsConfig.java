@@ -1,17 +1,20 @@
-package com.pluhin.helper.reconciliation;
+package com.pluhin.helper.reconciliation.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Data
 @Entity
 @Table(name = "acts_config")
-@EqualsAndHashCode(callSuper = true)
-public class ActsConfig extends AbstractPersistable<Integer> {
+public class ActsConfig {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
   private String actName;
   private int documentColumn;
   private int dateColumn;

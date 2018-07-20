@@ -1,6 +1,6 @@
 package com.pluhin.helper.reconciliation.service;
 
-import com.pluhin.helper.reconciliation.ActsConfig;
+import com.pluhin.helper.reconciliation.entity.ActsConfig;
 import com.pluhin.helper.reconciliation.repository.ActsConfigRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
