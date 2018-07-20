@@ -13,3 +13,11 @@
 .upload-title {
   margin-top: 20px;
 }
+
+.upload-input {
+  margin-bottom: 20px;
+}
+
+.upload-button {
+  height: 92px;
+}

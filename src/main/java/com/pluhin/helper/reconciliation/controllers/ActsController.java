@@ -1,9 +1,9 @@
-package com.pluhin.helper.reconciliation.web.controllers;
+package com.pluhin.helper.reconciliation.controllers;
 
 import static org.springframework.http.ResponseEntity.ok;
 
 import com.pluhin.helper.reconciliation.common.dto.CheckErrorsDTO;
-import com.pluhin.helper.reconciliation.web.service.ActsService;
+import com.pluhin.helper.reconciliation.service.ActsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,10 @@ public class ActsController {
   }
 
   @PostMapping("/show")
-  public ResponseEntity<CheckErrorsDTO> sendErrorsResponse(@RequestParam MultipartFile file) {
-    return ok(actsService.doReconciliation(file));
+  public ResponseEntity<CheckErrorsDTO> sendErrorsResponse(
+      @RequestParam MultipartFile firstFile,
+      @RequestParam MultipartFile secondFile) {
+
+    return ok(actsService.doReconciliation(firstFile, secondFile));
   }
 }

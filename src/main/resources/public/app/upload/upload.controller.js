@@ -3,8 +3,8 @@
 angular.module('acts').controller('uploadCtrl',
     function ($scope, $location, uploadService, toastr) {
 
-      $scope.uploadFile = function (file) {
-        uploadService.upload(file).then(
+      $scope.uploadFile = function (firstFile, secondFile) {
+        uploadService.upload(firstFile, secondFile).then(
             response => {
               toastr.success('', 'Success');
               $scope.result = response.data;

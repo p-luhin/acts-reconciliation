@@ -6,9 +6,10 @@ angular.module('acts').factory('uploadService', function ($http) {
     upload: upload
   };
 
-  function upload(file) {
+  function upload(firstFile, secondFile) {
     let fd = new FormData();
-    fd.append('file', file);
+    fd.append('firstFile', firstFile);
+    fd.append('secondFile', secondFile);
 
     return $http.post('/api/acts/show', fd, {
       headers: {'Content-Type': undefined}

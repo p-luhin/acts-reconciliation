@@ -1,4 +1,4 @@
-package com.pluhin.helper.reconciliation.web;
+package com.pluhin.helper.reconciliation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

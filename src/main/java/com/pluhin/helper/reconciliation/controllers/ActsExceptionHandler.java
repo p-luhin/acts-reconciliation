@@ -1,4 +1,4 @@
-package com.pluhin.helper.reconciliation.web.controllers;
+package com.pluhin.helper.reconciliation.controllers;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 

@@ -3,11 +3,16 @@
 </div>
 <div class="col-md-6">
   <div class="upload-form">
+    <input type="button" class="btn btn-default upload-button" style="float: right" value="Загрузить"
+           ng-click="uploadFile(firstFile, secondFile)">
     <div class="custom-file upload-input">
-      <input type="file" class="custom-file-input" id="customFile" file-input ng-model="file">
-      <label class="custom-file-label" for="customFile">Выбрать файл</label>
+      <input type="file" class="custom-file-input" id="firstFile" file-input ng-model="firstFile">
+      <label class="custom-file-label" for="firstFile">Выбрать файл</label>
     </div>
-    <input type="button" class="btn btn-default" style="float: right" value="Загрузить" ng-click="uploadFile(file)">
+    <div class="custom-file upload-input">
+      <input type="file" class="custom-file-input" id="secondFile" file-input ng-model="secondFile">
+      <label class="custom-file-label" for="secondFile">Выбрать файл</label>
+    </div>
   </div>
 
   <div ng-if="result">
@@ -17,7 +22,7 @@
         <h5>Debit 1 -> Credit 2</h5>
         <span ng-repeat="deb1 in result.debit1">{{deb1}}</span>
       </div>
-      <div class="col-md-3" >
+      <div class="col-md-3">
         <h5>Credit 2 -> Debit 1</h5>
         <span ng-repeat="cred2 in result.credit2">{{cred2}}</span>
       </div>
