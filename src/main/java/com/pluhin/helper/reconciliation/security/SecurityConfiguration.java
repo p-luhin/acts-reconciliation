@@ -1,5 +1,6 @@
 package com.pluhin.helper.reconciliation.security;
 
+import com.pluhin.helper.reconciliation.security.handler.ErrorAuthenticationHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,16 +16,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   private final UserDetailsService userDetailsService;
+  private final ErrorAuthenticationHandler errorAuthenticationHandler;
 
   @Autowired
   public SecurityConfiguration(
-      UserDetailsService userDetailsService) {
+      UserDetailsService userDetailsService,
+      ErrorAuthenticationHandler errorAuthenticationHandler) {
     this.userDetailsService = userDetailsService;
+    this.errorAuthenticationHandler = errorAuthenticationHandler;
   }
 
   @Bean
   public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
+    return new BCryptPasswordEncoder(4);
   }
 
   @Override
@@ -36,6 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .loginProcessingUrl("/api/users/login")
         .usernameParameter("j_username")
         .passwordParameter("j_password")
+        .failureHandler(errorAuthenticationHandler)
         .permitAll()
         .and()
         .authorizeRequests()

@@ -7,4 +7,9 @@ angular.module('acts').config(function ($routeProvider) {
     controller: 'uploadCtrl',
     controllerAs: 'ctrl'
   })
+  .when('/login', {
+    templateUrl: 'app/login/login.tmpl.html',
+    controller: 'loginCtrl',
+    controllerAs: 'ctrl'
+  })
 });

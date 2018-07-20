@@ -53,7 +53,7 @@
 
   <changeSet id="v1.1_3" author="p.luhin">
     <comment>add default user</comment>
-    <insert tableName="user">
+    <insert tableName="users">
       <column name="id" valueNumeric="1"/>
       <column name="username" value="pavel.luhin@gmail.com"/>
       <column name="password" value="$2a$04$nZkme/R9IKfRunz3UZN1WOkdESAl399ZW12T/a5TfD4Do2feOUkYi"/>
