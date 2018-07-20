@@ -56,7 +56,7 @@
     <insert tableName="users">
       <column name="id" valueNumeric="1"/>
       <column name="username" value="pavel.luhin@gmail.com"/>
-      <column name="password" value="$2a$04$nZkme/R9IKfRunz3UZN1WOkdESAl399ZW12T/a5TfD4Do2feOUkYi"/>
+      <column name="password" value="$2a$04$5wBMhQuARESaBYaxCE/Pt.s1FN3/VYLFclseEmiTpBqxmV/4ATyVW"/>
     </insert>
   </changeSet>
 

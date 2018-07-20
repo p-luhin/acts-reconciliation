@@ -27,7 +27,6 @@ public class ActsController {
   public ResponseEntity<CheckErrorsDTO> sendErrorsResponse(
       @RequestParam MultipartFile firstFile,
       @RequestParam MultipartFile secondFile) {
-
     return ok(actsService.doReconciliation(firstFile, secondFile));
   }
 }
