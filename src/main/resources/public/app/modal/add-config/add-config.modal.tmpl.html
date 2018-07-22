@@ -1,0 +1,49 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">Добавить конфигурацию</h3>
+</div>
+<div class="modal-body" id="modal-body">
+  <div class="form-group">
+    <label for="actName">Название конфигурации</label>
+    <input type="text" class="form-control" placeholder="Введите название конфигурации" id="actName"
+           ng-model="config.actName">
+  </div>
+  <div class="form-group">
+    <label for="documentColumn">№ колонки документа</label>
+    <input type="text" class="form-control" placeholder="Введите № колонки документа" id="documentColumn"
+           ng-model="config.documentColumn">
+  </div>
+  <div class="form-group">
+    <label for="dateColumn">№ колонки даты</label>
+    <input type="text" class="form-control" placeholder="Введите № колонки даты" id="dateColumn"
+           ng-model="config.dateColumn">
+  </div>
+  <div class="form-group">
+    <label for="dataStartRow">Строка старта данных</label>
+    <input type="text" class="form-control" placeholder="Введите строку старта данных" id="dataStartRow"
+           ng-model="config.dataStartRow">
+  </div>
+  <div class="form-group">
+    <label for="creditColumn">Колонка кредита</label>
+    <input type="text" class="form-control" placeholder="Введите № колонки кредита" id="creditColumn"
+           ng-model="config.creditColumn">
+  </div>
+  <div class="form-group">
+    <label for="debitColumn">Колонка дебета</label>
+    <input type="text" class="form-control" placeholder="Введите № колонки дебета" id="debitColumn"
+           ng-model="config.debitColumn">
+  </div>
+  <div class="form-group">
+    <label for="dataEndColumn">Колонка конца данных</label>
+    <input type="text" class="form-control" placeholder="Введите № колонки конца данных" id="dataEndColumn"
+           ng-model="config.dataEndColumn">
+  </div>
+  <div class="form-group">
+    <label for="dataEndTextPart">Текст конца данных</label>
+    <input type="text" class="form-control" placeholder="Введите текст конца данных" id="dataEndTextPart"
+           ng-model="config.dataEndTextPart">
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="ok(config)">Добавить</button>
+  <button class="btn btn-warning" type="button" ng-click="cancel()">Отмена</button>
+</div>

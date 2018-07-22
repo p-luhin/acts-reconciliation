@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('acts').controller('loginCtrl',
-    function ($scope, $location, loginService) {
+    function ($scope, $location, loginService, toastr) {
 
       $scope.login = login;
 

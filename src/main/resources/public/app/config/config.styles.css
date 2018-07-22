@@ -1,0 +1,8 @@
+.config-text-header {
+  display: inline-block;
+}
+
+.config-text-header-add {
+  display: inline-block;
+  float: right;
+}
