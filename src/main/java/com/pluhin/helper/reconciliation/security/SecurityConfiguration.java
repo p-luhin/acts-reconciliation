@@ -1,6 +1,7 @@
 package com.pluhin.helper.reconciliation.security;
 
 import com.pluhin.helper.reconciliation.security.handler.ErrorAuthenticationHandler;
+import com.pluhin.helper.reconciliation.security.handler.UnauthorizedEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,13 +18,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   private final UserDetailsService userDetailsService;
   private final ErrorAuthenticationHandler errorAuthenticationHandler;
+  private final UnauthorizedEntryPoint unauthorizedEntryPoint;
 
   @Autowired
   public SecurityConfiguration(
       UserDetailsService userDetailsService,
-      ErrorAuthenticationHandler errorAuthenticationHandler) {
+      ErrorAuthenticationHandler errorAuthenticationHandler,
+      UnauthorizedEntryPoint unauthorizedEntryPoint) {
     this.userDetailsService = userDetailsService;
     this.errorAuthenticationHandler = errorAuthenticationHandler;
+    this.unauthorizedEntryPoint = unauthorizedEntryPoint;
   }
 
   @Bean
@@ -35,6 +39,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http
         .csrf().disable()
+        .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint)
+        .and()
         .userDetailsService(userDetailsService)
         .formLogin()
         .loginProcessingUrl("/api/users/login")

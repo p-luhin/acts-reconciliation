@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('acts').controller('loginCtrl',
-    function ($scope, $location, loginService, toastr,) {
+    function ($scope, $location, loginService) {
 
       $scope.login = login;
 
@@ -9,8 +9,6 @@ angular.module('acts').controller('loginCtrl',
         loginService.login(username, password).then(result => {
           toastr.success('Успешный вход в систему');
           $location.path('/config')
-        }, error => {
-          toastr.error(error.data.message, 'Ошибка')
-        })
+        });
       }
     });
