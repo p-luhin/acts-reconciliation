@@ -1,11 +1,12 @@
 package com.pluhin.helper.reconciliation.processor;
 
-import com.pluhin.helper.reconciliation.entity.ActsConfig;
 import com.pluhin.helper.reconciliation.common.act.Act;
 import com.pluhin.helper.reconciliation.common.act.ActItem;
+import com.pluhin.helper.reconciliation.entity.ActsConfig;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -28,12 +29,12 @@ public class XlsProcessor {
     }
 
     while (!shouldEnd(row, config)) {
-      row = rowIterator.next();
       Optional.ofNullable(getCreditIfPresent(row, config))
           .ifPresent(credits::add);
 
       Optional.ofNullable(getDebitIfPresent(row, config))
           .ifPresent(debits::add);
+      row = rowIterator.next();
     }
 
     return act;
@@ -47,12 +48,9 @@ public class XlsProcessor {
   }
 
   private ActItem getCreditIfPresent(Row row, ActsConfig config) {
-    if (row.getRowNum() < config.getDataStartRow()) {
-      return null;
-    }
-
     double creditSum = Optional
-        .ofNullable(row.getCell(config.getCreditColumn()).getNumericCellValue())
+        .ofNullable(row.getCell(config.getCreditColumn()))
+        .map(Cell::getNumericCellValue)
         .orElse(0d);
 
     if (creditSum == 0d) {
@@ -63,11 +61,8 @@ public class XlsProcessor {
   }
 
   private ActItem getDebitIfPresent(Row row, ActsConfig config) {
-    if (row.getRowNum() < config.getDataStartRow()) {
-      return null;
-    }
-
-    double debitSum = Optional.ofNullable(row.getCell(config.getDebitColumn()).getNumericCellValue())
+    double debitSum = Optional.ofNullable(row.getCell(config.getDebitColumn()))
+        .map(Cell::getNumericCellValue)
         .orElse(0d);
 
     if (debitSum == 0d) {

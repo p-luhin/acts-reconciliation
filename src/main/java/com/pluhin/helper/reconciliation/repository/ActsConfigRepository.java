@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ActsConfigRepository extends JpaRepository<ActsConfig, Integer> {
 
+  ActsConfig findByActName(String actName);
 }

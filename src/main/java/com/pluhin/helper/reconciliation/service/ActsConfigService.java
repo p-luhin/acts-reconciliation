@@ -20,7 +20,7 @@ public class ActsConfigService {
 
   @Transactional(readOnly = true)
   public ActsConfig getConfig(String actName) {
-    return new ActsConfig();
+    return repository.findByActName(actName);
   }
 
   @Transactional

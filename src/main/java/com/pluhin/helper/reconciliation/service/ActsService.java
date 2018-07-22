@@ -1,10 +1,10 @@
 package com.pluhin.helper.reconciliation.service;
 
-import com.pluhin.helper.reconciliation.entity.ActsConfig;
 import com.pluhin.helper.reconciliation.common.act.Act;
 import com.pluhin.helper.reconciliation.common.act.ActItem;
 import com.pluhin.helper.reconciliation.common.dto.CheckErrorsDTO;
 import com.pluhin.helper.reconciliation.common.exception.InvalidFileException;
+import com.pluhin.helper.reconciliation.entity.ActsConfig;
 import com.pluhin.helper.reconciliation.processor.XlsProcessor;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,13 +35,20 @@ public class ActsService {
     Workbook firstWorkbook = getWorkbook(firstFile);
     Workbook secondWorkbook = getWorkbook(secondFile);
 
-    ActsConfig firstConfig = configService.getConfig(firstFile.getName());
-    ActsConfig secondConfig = configService.getConfig(secondFile.getName());
+    String firstActName = getActName(firstFile.getOriginalFilename());
+    String secondActName = getActName(secondFile.getOriginalFilename());
+
+    ActsConfig firstConfig = configService.getConfig(firstActName);
+    ActsConfig secondConfig = configService.getConfig(secondActName);
 
     Act firstAct = xlsProcessor.processWorkbook(firstWorkbook, firstConfig);
     Act secondAct = xlsProcessor.processWorkbook(secondWorkbook, secondConfig);
 
     return checkForErrors(firstAct, secondAct);
+  }
+
+  private String getActName(String originalFilename) {
+    return originalFilename.substring(0, originalFilename.indexOf('.'));
   }
 
   private CheckErrorsDTO checkForErrors(Act firstAct, Act secondAct) {
