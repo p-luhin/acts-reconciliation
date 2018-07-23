@@ -1,6 +1,7 @@
 package com.pluhin.helper.reconciliation.common.act;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.Data;
 
@@ -25,9 +26,14 @@ public class ActItem {
     ActItem actItem = (ActItem) o;
 
     Pattern pattern = Pattern.compile(DOCUMENT_NUMBER_REGEX);
+    Matcher thisMatcher = pattern.matcher(document);
+    thisMatcher.matches();
 
-    String thisDocNumber = pattern.matcher(document).group(1);
-    String objectDocNumber = pattern.matcher(actItem.document).group(1);
+    Matcher objectMatcher = pattern.matcher(actItem.document);
+    objectMatcher.matches();
+
+    String thisDocNumber = thisMatcher.group(1);
+    String objectDocNumber = objectMatcher.group(1);
 
     return Objects.equals(sum, actItem.sum) && thisDocNumber.equals(objectDocNumber);
   }

@@ -7,7 +7,7 @@ angular.module('acts').controller('uploadCtrl',
         uploadService.upload(firstFile, secondFile).then(
             response => {
               toastr.success('', 'Success');
-              $scope.result = response.data;
+              $scope.errors = response.data.errors;
             }, error => {
               toastr.error(error.data.message, 'Ошибка')
             });

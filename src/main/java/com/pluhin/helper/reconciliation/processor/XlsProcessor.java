@@ -34,7 +34,9 @@ public class XlsProcessor {
 
       Optional.ofNullable(getDebitIfPresent(row, config))
           .ifPresent(debits::add);
-      row = rowIterator.next();
+      if (rowIterator.hasNext()) {
+        row = rowIterator.next();
+      }
     }
 
     return act;

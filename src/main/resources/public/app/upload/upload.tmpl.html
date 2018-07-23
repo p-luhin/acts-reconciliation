@@ -15,28 +15,13 @@
         <label class="custom-file-label" for="secondFile">Выбрать файл</label>
       </div>
     </div>
-
-    <div ng-if="result">
+    <div ng-if="errors">
       <h4 class="text-center" style="margin-top: 15px">Найденые ошибки</h4>
       <div class="row">
-        <div class="col-md-3">
-          <h5>Debit 1 -> Credit 2</h5>
-          <span ng-repeat="deb1 in result.debit1">{{deb1}}</span>
-        </div>
-        <div class="col-md-3">
-          <h5>Credit 2 -> Debit 1</h5>
-          <span ng-repeat="cred2 in result.credit2">{{cred2}}</span>
-        </div>
-        <div class="col-md-3">
-          <h5>Credit 1 -> Debit 2</h5>
-          <span ng-repeat="cred1 in result.credit1">{{cred1}}</span>
-        </div>
-        <div class="col-md-3">
-          <h5>Debit 2 -> Credit 1</h5>
-          <span ng-repeat="deb2 in result.debit2">{{deb2}}</span>
-        </div>
+        <span ng-repeat="error in errors">
+          {{error.document}} с суммой {{error.sum}} найдена у {{error.originalFileName}} но не найдена в другом файле
+        </span>
       </div>
     </div>
-
   </div>
 </div>
