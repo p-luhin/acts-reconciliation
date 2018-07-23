@@ -3,12 +3,14 @@ package com.pluhin.helper.reconciliation.service;
 import com.pluhin.helper.reconciliation.common.act.Act;
 import com.pluhin.helper.reconciliation.common.act.ActItem;
 import com.pluhin.helper.reconciliation.common.dto.CheckErrorsDTO;
+import com.pluhin.helper.reconciliation.common.exception.ConfigNotFoundException;
 import com.pluhin.helper.reconciliation.common.exception.InvalidFileException;
 import com.pluhin.helper.reconciliation.entity.ActsConfig;
 import com.pluhin.helper.reconciliation.processor.XlsProcessor;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -38,8 +40,14 @@ public class ActsService {
     String firstActName = getActName(firstFile.getOriginalFilename());
     String secondActName = getActName(secondFile.getOriginalFilename());
 
-    ActsConfig firstConfig = configService.getConfig(firstActName);
-    ActsConfig secondConfig = configService.getConfig(secondActName);
+    ActsConfig firstConfig =
+        Optional.ofNullable(configService.getConfig(firstActName))
+            .orElseThrow(() -> new ConfigNotFoundException(
+                "Конфигурация для " + firstActName + " не найдена"));
+    ActsConfig secondConfig =
+        Optional.ofNullable(configService.getConfig(secondActName))
+            .orElseThrow(() -> new ConfigNotFoundException(
+                    "Конфигурация для " + secondActName + " не найдена"));
 
     Act firstAct = xlsProcessor.processWorkbook(firstWorkbook, firstConfig);
     Act secondAct = xlsProcessor.processWorkbook(secondWorkbook, secondConfig);
