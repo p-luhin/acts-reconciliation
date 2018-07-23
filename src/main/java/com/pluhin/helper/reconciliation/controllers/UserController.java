@@ -42,4 +42,9 @@ public class UserController {
     userService.deleteAll(ids);
     return noContent().build();
   }
+
+  @GetMapping("/current")
+  public ResponseEntity<UserDTO> getCurrentUser() {
+    return ok(userService.getCurrentUser());
+  }
 }

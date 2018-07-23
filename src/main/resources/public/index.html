@@ -41,6 +41,20 @@
 </head>
 <body ng-controller="actsCtrl">
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" ng-href="#/upload">Сравнение</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul ng-if="authenticated" class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" ng-href="#/config">Конфигурация</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" ng-href="#/users">Пользователи</a>
+      </li>
+    </ul>
+    <a ng-if="!authenticated" class="nav-link" ng-href="#/login">Вход в систему</a>
+  </div>
+</nav>
 <ng-view/>
 
 <script src="app/acts.js"></script>

@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('acts').factory('usersService', function ($http) {
+angular.module('acts').factory('usersService', function ($rootScope, $http) {
   return {
     getAll: getAll,
-    deleteAll: deleteAll
+    deleteAll: deleteAll,
+    getCurrent: getCurrent,
+    checkAuthentication: checkAuthentication
   };
 
   function getAll() {
@@ -12,5 +14,23 @@ angular.module('acts').factory('usersService', function ($http) {
 
   function deleteAll(ids) {
     return $http.post('/api/users/delete', ids);
+  }
+
+  function getCurrent() {
+    return $http.get('/api/users/current');
+  }
+
+  function checkAuthentication() {
+    getCurrent().then(result => {
+      let user = result.data;
+
+      if (!user) {
+        $rootScope.authenticated = false;
+        return;
+      }
+
+      $rootScope.authenticated = true;
+      localStorage.setItem('user', JSON.stringify(user));
+    });
   }
 });

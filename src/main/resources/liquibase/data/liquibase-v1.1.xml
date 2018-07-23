@@ -55,7 +55,7 @@
     <comment>add default user</comment>
     <insert tableName="users">
       <column name="id" valueNumeric="1"/>
-      <column name="username" value="pavel.luhin@gmail.com"/>
+      <column name="username" value="pasha"/>
       <column name="password" value="$2a$04$5wBMhQuARESaBYaxCE/Pt.s1FN3/VYLFclseEmiTpBqxmV/4ATyVW"/>
     </insert>
   </changeSet>
