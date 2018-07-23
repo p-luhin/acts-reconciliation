@@ -1,7 +1,12 @@
 package com.pluhin.helper.reconciliation.service;
 
+import static java.util.stream.Collectors.toList;
+
+import com.pluhin.helper.reconciliation.common.dto.UserDTO;
 import com.pluhin.helper.reconciliation.entity.User;
 import com.pluhin.helper.reconciliation.repository.UserRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,5 +29,16 @@ public class UserService {
   public void createUser(User user) {
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     userRepository.save(user);
+  }
+
+  public List<UserDTO> getAll() {
+    return userRepository.findAll()
+        .stream()
+        .map(user -> new UserDTO(user.getId(), user.getUsername()))
+        .collect(toList());
+  }
+
+  public void deleteAll(List<Integer> ids) {
+    ids.forEach(userRepository::delete);
   }
 }
