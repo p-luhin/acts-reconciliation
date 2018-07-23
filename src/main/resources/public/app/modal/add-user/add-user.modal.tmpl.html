@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">Добавить пользователя</h3>
+</div>
+<div class="modal-body" id="modal-body">
+  <div class="form-group">
+    <label for="username">Имя пользователя</label>
+    <input type="text" class="form-control" placeholder="Введите имя пользователя" id="username"
+           ng-model="user.username">
+  </div>
+  <div class="form-group">
+    <label for="password">Пароль</label>
+    <input type="password" class="form-control" placeholder="Введите пароль" id="password"
+           ng-model="user.password">
+  </div>
+  <div class="form-group">
+    <label for="repeatPassword">Повтор пароля</label>
+    <input type="password" class="form-control" placeholder="Повторите пароль" id="repeatPassword"
+           ng-model="user.repeatPassword">
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="ok(user)">Добавить</button>
+  <button class="btn btn-warning" type="button" ng-click="cancel()">Отмена</button>
+</div>

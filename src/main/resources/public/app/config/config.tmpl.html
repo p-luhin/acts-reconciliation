@@ -1,0 +1,38 @@
+<div class="container config-page">
+  <div class="text-center config-title">
+    <h1 class="config-text-header">Конфигурация системы</h1>
+  </div>
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Название</th>
+        <th>№ Колонки документа</th>
+        <th>№ Колонки даты</th>
+        <th>Строка старта данных</th>
+        <th>Колонка кредита</th>
+        <th>Колонка дебета</th>
+        <th>Колонка конца данных</th>
+        <th>Текст конца данных</th>
+      </tr>
+      </thead>
+      <tbody ng-repeat="config in configs track by $index">
+      <tr class="config-table-row" ng-class="{'selected-config-row': config.selected}"
+          ng-click="select($index)">
+        <td>{{config.actName}}</td>
+        <td>{{config.documentColumn}}</td>
+        <td>{{config.dateColumn}}</td>
+        <td>{{config.dataStartRow}}</td>
+        <td>{{config.creditColumn}}</td>
+        <td>{{config.debitColumn}}</td>
+        <td>{{config.dataEndColumn}}</td>
+        <td>{{config.dataEndTextPart}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary pull-right" ng-click="openModalAddConfig()">Добавить</button>
+    <button class="btn btn-danger pull-right" ng-if="selected.length > 0"
+            ng-click="deleteSelected()">Удалить выбранное
+    </button>
+  </div>
+</div>

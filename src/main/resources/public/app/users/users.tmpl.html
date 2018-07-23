@@ -1,0 +1,24 @@
+<div class="container users-page">
+  <div class="text-center users-title">
+    <h1 class="users-text-header">Пользователи системы</h1>
+  </div>
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Имя пользователя</th>
+      </tr>
+      </thead>
+      <tbody ng-repeat="user in users track by $index">
+      <tr class="users-table-row" ng-class="{'selected-users-row': user.selected}"
+          ng-click="select($index)">
+        <td>{{user.username}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary pull-right" ng-click="openModalAddUser()">Добавить</button>
+    <button class="btn btn-danger pull-right" ng-if="selected.length > 0"
+            ng-click="deleteSelected()">Удалить выбранное
+    </button>
+  </div>
+</div>

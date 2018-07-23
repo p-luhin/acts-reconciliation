@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="acts">
+<head>
+  <title>Сверка актов</title>
+  <meta charset="UTF-8">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+          integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+          integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+          crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular-route.min.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular-animate.min.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular-sanitize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.tpls.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+        integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.css">
+
+  <link rel="stylesheet" href="app/upload/upload.styles.css">
+  <link rel="stylesheet" href="app/login/login.styles.css">
+  <link rel="stylesheet" href="app/config/config.styles.css">
+  <link rel="stylesheet" href="app/users/users.styles.css">
+</head>
+<body ng-controller="actsCtrl">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" ng-href="#/upload">Сверка</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul ng-if="authenticated" class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" ng-href="#/config">Конфигурация</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" ng-href="#/users">Пользователи</a>
+      </li>
+    </ul>
+    <a ng-if="!authenticated" class="nav-link" ng-href="#/login">Вход в систему</a>
+  </div>
+</nav>
+<ng-view/>
+
+<script src="app/acts.js"></script>
+<script src="app/acts.interceptor.js"></script>
+<script src="app/acts.config.js"></script>
+<script src="app/acts.route.js"></script>
+<script src="app/acts.controller.js"></script>
+<script src="app/directives/file-input/file-input.directive.js"></script>
+<script src="app/upload/upload.controller.js"></script>
+<script src="app/upload/upload.service.js"></script>
+<script src="app/login/login.service.js"></script>
+<script src="app/login/login.controller.js"></script>
+<script src="app/config/config.controller.js"></script>
+<script src="app/config/config.service.js"></script>
+<script src="app/users/users.controller.js"></script>
+<script src="app/users/users.service.js"></script>
+<script src="app/modal/add-config/add-config.modal.controller.js"></script>
+<script src="app/modal/add-config/add-config.modal.service.js"></script>
+<script src="app/modal/add-user/add-user.modal.controller.js"></script>
+<script src="app/modal/add-user/add-user.modal.service.js"></script>
+</body>
+</html>
