@@ -11,6 +11,6 @@ angular.module('acts').factory('configService', function ($http) {
   }
 
   function deleteAll(ids) {
-    return $http.delete('/api/acts/config/', ids);
+    return $http.post('/api/acts/config/delete', ids);
   }
 });

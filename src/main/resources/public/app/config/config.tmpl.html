@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container config-page">
   <div class="text-center config-title">
     <h1 class="config-text-header">Конфигурация системы</h1>
   </div>
@@ -29,5 +29,7 @@
         </tr>
       </tbody>
     </table>
+    <button class="btn btn-primary pull-right" ng-click="openModalAddConfig()">Добавить</button>
+    <button class="btn btn-danger pull-right" ng-if="selected.length > 0" ng-click="deleteSelected()">Удалить выбранное</button>
   </div>
 </div>

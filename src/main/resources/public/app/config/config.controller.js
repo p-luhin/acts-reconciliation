@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('acts').controller('configCtrl',
-    function ($scope, $uibModal, configService) {
+    function ($scope, $uibModal, toastr, configService) {
       activate();
 
       $scope.openModalAddConfig = openModalAddConfig;
@@ -18,11 +18,14 @@ angular.module('acts').controller('configCtrl',
 
       function select(index) {
         let element = $scope.configs[index];
+        let elementIndexInSelected = $scope.selected.indexOf(element);
 
-        if ($scope.selected.pop() === undefined) {
+        if (elementIndexInSelected < 0) {
           $scope.selected.push(element);
           element.selected = true;
         } else {
+          console.log(elementIndexInSelected);
+          $scope.selected.splice(elementIndexInSelected, 1);
           element.selected = false;
         }
       }
@@ -30,11 +33,12 @@ angular.module('acts').controller('configCtrl',
       function deleteSelected() {
         let ids = [];
 
-        selected.forEach(item => {
+        $scope.selected.forEach(item => {
           ids.push(item.id);
         });
 
         configService.deleteAll(ids).then(result => {
+          toastr.success('Успех');
           activate();
         })
       }
