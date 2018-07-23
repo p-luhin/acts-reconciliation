@@ -4,5 +4,18 @@
 
 .config-text-header-add {
   display: inline-block;
-  float: right;
+  float: left;
+}
+
+.config-table-row:hover {
+  background-color: #e9e9e9;
+  cursor: pointer;
+}
+
+.selected-config-row {
+  background-color: lightgray;
+}
+
+.selected-config-row:hover {
+  background-color: #a8a8a8;
 }

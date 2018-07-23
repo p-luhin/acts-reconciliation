@@ -32,4 +32,9 @@ public class ActsConfigService {
   public List<ActsConfig> getAll() {
     return repository.findAll();
   }
+
+  @Transactional
+  public void removeConfigs(List<Integer> ids) {
+    ids.forEach(repository::delete);
+  }
 }

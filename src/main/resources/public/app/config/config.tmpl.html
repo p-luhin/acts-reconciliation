@@ -1,7 +1,6 @@
 <div class="container">
   <div class="text-center config-title">
     <h1 class="config-text-header">Конфигурация системы</h1>
-    <h3 class="config-text-header-add" ng-click="openModalAddConfig()">Добавить</h3>
   </div>
   <div class="col-md-6">
     <table class="table">
@@ -17,8 +16,8 @@
         <th>Текст конца данных</th>
       </tr>
       </thead>
-      <tbody ng-repeat="config in configs">
-        <tr>
+      <tbody ng-repeat="config in configs track by $index">
+        <tr class="config-table-row" ng-class="{'selected-config-row': config.selected}" ng-click="select($index)">
           <td>{{config.actName}}</td>
           <td>{{config.documentColumn}}</td>
           <td>{{config.dateColumn}}</td>

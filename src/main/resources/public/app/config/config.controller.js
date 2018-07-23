@@ -5,10 +5,37 @@ angular.module('acts').controller('configCtrl',
       activate();
 
       $scope.openModalAddConfig = openModalAddConfig;
+      $scope.select = select;
+      $scope.deleteSelected = deleteSelected;
+      $scope.selected = [];
 
       function activate() {
         configService.getAllConfigs().then(response => {
           $scope.configs = response.data;
+          $scope.selected = [];
+        })
+      }
+
+      function select(index) {
+        let element = $scope.configs[index];
+
+        if ($scope.selected.pop() === undefined) {
+          $scope.selected.push(element);
+          element.selected = true;
+        } else {
+          element.selected = false;
+        }
+      }
+
+      function deleteSelected() {
+        let ids = [];
+
+        selected.forEach(item => {
+          ids.push(item.id);
+        });
+
+        configService.deleteAll(ids).then(result => {
+          activate();
         })
       }
 
