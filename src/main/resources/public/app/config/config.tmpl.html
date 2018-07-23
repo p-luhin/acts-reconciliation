@@ -17,19 +17,22 @@
       </tr>
       </thead>
       <tbody ng-repeat="config in configs track by $index">
-        <tr class="config-table-row" ng-class="{'selected-config-row': config.selected}" ng-click="select($index)">
-          <td>{{config.actName}}</td>
-          <td>{{config.documentColumn}}</td>
-          <td>{{config.dateColumn}}</td>
-          <td>{{config.dataStartRow}}</td>
-          <td>{{config.creditColumn}}</td>
-          <td>{{config.debitColumn}}</td>
-          <td>{{config.dataEndColumn}}</td>
-          <td>{{config.dataEndTextPart}}</td>
-        </tr>
+      <tr class="config-table-row" ng-class="{'selected-config-row': config.selected}"
+          ng-click="select($index)">
+        <td>{{config.actName}}</td>
+        <td>{{config.documentColumn}}</td>
+        <td>{{config.dateColumn}}</td>
+        <td>{{config.dataStartRow}}</td>
+        <td>{{config.creditColumn}}</td>
+        <td>{{config.debitColumn}}</td>
+        <td>{{config.dataEndColumn}}</td>
+        <td>{{config.dataEndTextPart}}</td>
+      </tr>
       </tbody>
     </table>
     <button class="btn btn-primary pull-right" ng-click="openModalAddConfig()">Добавить</button>
-    <button class="btn btn-danger pull-right" ng-if="selected.length > 0" ng-click="deleteSelected()">Удалить выбранное</button>
+    <button class="btn btn-danger pull-right" ng-if="selected.length > 0"
+            ng-click="deleteSelected()">Удалить выбранное
+    </button>
   </div>
 </div>

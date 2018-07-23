@@ -12,6 +12,10 @@ angular.module('acts').config(function ($routeProvider) {
   })
   .when('/config', {
     templateUrl: 'app/config/config.tmpl.html',
-    controller: 'configCtrl',
+    controller: 'configCtrl'
+  })
+  .when('/users', {
+    templateUrl: 'app/users/users.tmpl.html',
+    controller: 'usersCtrl',
   })
 });

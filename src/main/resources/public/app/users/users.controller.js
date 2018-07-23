@@ -1,30 +1,29 @@
 'use strict';
 
-angular.module('acts').controller('configCtrl',
-    function ($scope, $uibModal, toastr, configService) {
+angular.module('acts').controller('usersCtrl',
+    function ($scope, $uibModal, toastr, usersService) {
       activate();
 
-      $scope.openModalAddConfig = openModalAddConfig;
+      $scope.openModalAddUser = openModalAddUser;
       $scope.select = select;
       $scope.deleteSelected = deleteSelected;
       $scope.selected = [];
 
       function activate() {
-        configService.getAllConfigs().then(response => {
-          $scope.configs = response.data;
+        usersService.getAll().then(response => {
+          $scope.users = response.data;
           $scope.selected = [];
         })
       }
 
       function select(index) {
-        let element = $scope.configs[index];
+        let element = $scope.users[index];
         let elementIndexInSelected = $scope.selected.indexOf(element);
 
         if (elementIndexInSelected < 0) {
           $scope.selected.push(element);
           element.selected = true;
         } else {
-          console.log(elementIndexInSelected);
           $scope.selected.splice(elementIndexInSelected, 1);
           element.selected = false;
         }
@@ -37,22 +36,22 @@ angular.module('acts').controller('configCtrl',
           ids.push(item.id);
         });
 
-        configService.deleteAll(ids).then(result => {
+        usersService.deleteAll(ids).then(result => {
           toastr.success('Успех');
           activate();
         })
       }
 
-      function openModalAddConfig() {
+      function openModalAddUser() {
         $uibModal.open({
           animation: true,
           ariaLabelledBy: 'modal-title',
           ariaDescribedBy: 'modal-body',
-          templateUrl: 'app/modal/add-config/add-config.modal.tmpl.html',
-          controller: 'addConfigModalCtrl',
+          templateUrl: 'app/modal/add-user/add-user.modal.tmpl.html',
+          controller: 'addUserModalCtrl',
           size: 'lg'
         }).result.then(function () {
-          toastr.success('Конфигурация добавлена', 'Успех');
+          toastr.success('Пользователь добавлен', 'Успех');
           activate();
         });
       }

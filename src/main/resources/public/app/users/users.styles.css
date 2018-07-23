@@ -1,0 +1,28 @@
+.users-page {
+  margin-top: 20px
+}
+
+.users-text-header {
+  display: inline-block;
+}
+
+.users-table-row:hover {
+  background-color: #e9e9e9;
+  cursor: pointer;
+}
+
+.users-config-row {
+  background-color: lightgray;
+}
+
+.users-config-row:hover {
+  background-color: #a8a8a8;
+}
+
+.selected-users-row {
+  background-color: lightgray;
+}
+
+.selected-users-row:hover {
+  background-color: #a8a8a8;
+}
