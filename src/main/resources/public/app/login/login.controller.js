@@ -12,4 +12,20 @@ angular.module('acts').controller('loginCtrl',
           $location.path('/config');
         });
       }
+
+      $('#login').keyup(event => {
+        if (event.keyCode === 13) {
+          if ($scope.username && $scope.password) {
+            $('#loginButton').click();
+          }
+        }
+      });
+
+      $('#password').keyup(event => {
+        if (event.keyCode === 13) {
+          if ($scope.username && $scope.password) {
+            $('#loginButton').click();
+          }
+        }
+      });
     });
