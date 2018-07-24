@@ -10,7 +10,9 @@
       </tr>
       </thead>
       <tbody ng-repeat="user in users track by $index">
-      <tr class="users-table-row" ng-class="{'selected-users-row': user.selected}"
+      <tr class="users-table-row"
+          ng-class="{'selected-users-row': user.selected,
+          'disabled-pointer': user.username === getCurrentUserName()}"
           ng-click="select($index)">
         <td>{{user.username}}</td>
       </tr>

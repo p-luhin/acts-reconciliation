@@ -26,3 +26,8 @@
 .selected-users-row:hover {
   background-color: #a8a8a8;
 }
+
+.disabled-pointer:hover {
+  background-color: white;
+  cursor: not-allowed; !important;
+}

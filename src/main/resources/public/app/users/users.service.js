@@ -5,7 +5,8 @@ angular.module('acts').factory('usersService', function ($rootScope, $http) {
     getAll: getAll,
     deleteAll: deleteAll,
     getCurrent: getCurrent,
-    checkAuthentication: checkAuthentication
+    checkAuthentication: checkAuthentication,
+    getCurrentUserName: getCurrentUserName
   };
 
   function getAll() {
@@ -32,5 +33,12 @@ angular.module('acts').factory('usersService', function ($rootScope, $http) {
       $rootScope.authenticated = true;
       localStorage.setItem('user', JSON.stringify(user));
     });
+  }
+
+  function getCurrentUserName() {
+    let currentUser = localStorage.getItem('user');
+    if (currentUser) {
+      return JSON.parse(currentUser).username;
+    }
   }
 });

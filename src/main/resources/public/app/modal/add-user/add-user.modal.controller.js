@@ -7,8 +7,9 @@ angular.module('acts').controller('addUserModalCtrl',
           toastr.error('Пароли не совпадают', 'Ошибка');
           return;
         }
-        addUserModalService.addUser(user);
-        $uibModalInstance.close();
+        addUserModalService.addUser(user).then(result => {
+          $uibModalInstance.close();
+        });
       };
 
       $scope.cancel = function () {

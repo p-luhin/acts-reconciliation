@@ -18,6 +18,13 @@ angular.module('acts').controller('usersCtrl',
 
       function select(index) {
         let element = $scope.users[index];
+
+        console.log(usersService.getCurrentUserName());
+
+        if (element.username === usersService.getCurrentUserName()) {
+          return;
+        }
+
         let elementIndexInSelected = $scope.selected.indexOf(element);
 
         if (elementIndexInSelected < 0) {
@@ -50,9 +57,11 @@ angular.module('acts').controller('usersCtrl',
           templateUrl: 'app/modal/add-user/add-user.modal.tmpl.html',
           controller: 'addUserModalCtrl',
           size: 'lg'
-        }).result.then(function () {
+        }).result.then(() => {
           toastr.success('Пользователь добавлен', 'Успех');
           activate();
+        }, () => {
+          toastr.error('Ошибка добавления пользователя', 'Ошибка');
         });
       }
     });

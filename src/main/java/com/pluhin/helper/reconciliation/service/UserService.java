@@ -1,6 +1,7 @@
 package com.pluhin.helper.reconciliation.service;
 
 import static java.util.stream.Collectors.toList;
+import static org.springframework.security.core.context.SecurityContextHolder.getContext;
 
 import com.pluhin.helper.reconciliation.common.dto.UserDTO;
 import com.pluhin.helper.reconciliation.entity.User;
@@ -44,15 +45,23 @@ public class UserService {
 
   @Transactional
   public void deleteAll(List<Integer> ids) {
+    User currentUser = userRepository.findByUsername(getCurrentUserName());
+
+    if (ids.contains(currentUser.getId())) {
+      throw new IllegalArgumentException("Нельзя удалить самого себя");
+    }
+
     ids.forEach(userRepository::delete);
   }
 
   @Transactional(readOnly = true)
   public UserDTO getCurrentUser() {
-    String username = SecurityContextHolder.getContext().getAuthentication().getName();
-
-    return Optional.ofNullable(userRepository.findByUsername(username))
-        .map(user -> new UserDTO(user.getId(), username))
+    return Optional.ofNullable(userRepository.findByUsername(getCurrentUserName()))
+        .map(user -> new UserDTO(user.getId(), user.getUsername()))
         .orElse(null);
+  }
+
+  private String getCurrentUserName() {
+    return getContext().getAuthentication().getName();
   }
 }
