@@ -10,5 +10,16 @@ angular.module('acts').controller('addConfigModalCtrl',
 
       $scope.cancel = function () {
         $uibModalInstance.dismiss();
-      }
+      };
+
+      $(document).ready(() => {
+        $('#actName').tooltip();
+        $('#creditColumn').tooltip();
+        $('#debitColumn').tooltip();
+        $('#dataEndColumn').tooltip();
+        $('#dataEndTextPart').tooltip();
+        $('#dataStartRow').tooltip();
+        $('#dateColumn').tooltip();
+        $('#documentColumn').tooltip();
+      })
     });

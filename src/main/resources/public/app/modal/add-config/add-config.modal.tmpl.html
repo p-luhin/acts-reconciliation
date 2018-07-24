@@ -5,42 +5,50 @@
   <div class="form-group">
     <label for="actName">Название конфигурации</label>
     <input type="text" class="form-control" placeholder="Введите название конфигурации" id="actName"
-           ng-model="config.actName">
+           ng-model="config.actName" data-toggle="tooltip" data-placement="top"
+           title="Название конфигурации должно соответствовать названию загружаемого файла">
   </div>
   <div class="form-group">
     <label for="documentColumn">№ колонки документа</label>
     <input type="text" class="form-control" placeholder="Введите № колонки документа" id="documentColumn"
-           ng-model="config.documentColumn">
+           ng-model="config.documentColumn" data-toggle="tooltip" data-placement="top"
+           title="№ колонки минус 1">
   </div>
   <div class="form-group">
     <label for="dateColumn">№ колонки даты</label>
     <input type="text" class="form-control" placeholder="Введите № колонки даты" id="dateColumn"
-           ng-model="config.dateColumn">
+           ng-model="config.dateColumn" data-toggle="tooltip" data-placement="top"
+           title="№ колонки минус 1">
   </div>
   <div class="form-group">
     <label for="dataStartRow">Строка старта данных</label>
     <input type="text" class="form-control" placeholder="Введите строку старта данных" id="dataStartRow"
-           ng-model="config.dataStartRow">
+           ng-model="config.dataStartRow" data-toggle="tooltip" data-placement="top"
+           title="№ строки минус 1">
   </div>
   <div class="form-group">
     <label for="creditColumn">Колонка кредита</label>
     <input type="text" class="form-control" placeholder="Введите № колонки кредита" id="creditColumn"
-           ng-model="config.creditColumn">
+           ng-model="config.creditColumn" data-toggle="tooltip" data-placement="top"
+           title="№ колонки, где находятся суммы кредитов минус 1">
   </div>
   <div class="form-group">
     <label for="debitColumn">Колонка дебета</label>
     <input type="text" class="form-control" placeholder="Введите № колонки дебета" id="debitColumn"
-           ng-model="config.debitColumn">
+           ng-model="config.debitColumn" data-toggle="tooltip" data-placement="top"
+           title="№ колонки, где находятся суммы дебетов минус 1">
   </div>
   <div class="form-group">
     <label for="dataEndColumn">Колонка конца данных</label>
     <input type="text" class="form-control" placeholder="Введите № колонки конца данных" id="dataEndColumn"
-           ng-model="config.dataEndColumn">
+           ng-model="config.dataEndColumn" data-toggle="tooltip" data-placement="top"
+           title="№ колонки, где находится текст сразу после колонок с дебетом/кредитом минус 1">
   </div>
   <div class="form-group">
     <label for="dataEndTextPart">Текст конца данных</label>
     <input type="text" class="form-control" placeholder="Введите текст конца данных" id="dataEndTextPart"
-           ng-model="config.dataEndTextPart">
+           ng-model="config.dataEndTextPart" data-toggle="tooltip" data-placement="top"
+           title="Любое, желательно не встречающееся ранее слово, находящееся сразу после колонок с дебетом/кредитом">
   </div>
 </div>
 <div class="modal-footer">
