@@ -9,15 +9,15 @@
              ng-click="uploadFile(firstFile, secondFile)">
       <div class="custom-file upload-input">
         <input type="file" class="custom-file-input" id="firstFile" file-input ng-model="firstFile"
-        ng-class="{'is-invalid': firstError}">
+               ng-class="{'is-invalid': firstError}" accept=".xlsx, .xls">
         <label class="custom-file-label" for="firstFile">Выбрать файл</label>
         <div class="invalid-feedback" ng-show="firstError">
           Выберите файл
         </div>
       </div>
       <div class="custom-file upload-input">
-        <input type="file" class="custom-file-input" id="secondFile" file-input
-               ng-model="secondFile" ng-class="{'is-invalid': secondError}">
+        <input type="file" class="custom-file-input" id="secondFile" file-input ng-model="secondFile"
+               ng-class="{'is-invalid': secondError}" accept=".xlsx, .xls">
         <label class="custom-file-label" for="secondFile">Выбрать файл</label>
         <div class="invalid-feedback" ng-show="secondError">
           Выберите файл
